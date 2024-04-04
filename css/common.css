@@ -1,7 +1,8 @@
 @import url(./reset.css);
-#wrap,
-.container {
-  position: relative;
+
+.main{
+  width: 980px;
+  margin: 0 auto;
 }
 
 /* 루트 */
