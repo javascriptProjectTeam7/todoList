@@ -1,0 +1,8 @@
+#task_modal{
+  width: 450px;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: calc((100% - 980px)/2);
+  transform: translateY(-50%);
+}
