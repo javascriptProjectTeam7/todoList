@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css');
+
+html,body{
+  font-family: 'Noto Sans KR', 'Noto Sans', sans-serif;
+}
+
+#wrap,
+.container {
+  position: relative;
+}
+
+/* 루트 */
+:root {
+  --color-point-green: #b7f932;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.clearfix{
+}
+.clearfix::after{
+  content: '';
+  display: inline-block;
+  clear: both;
+}
