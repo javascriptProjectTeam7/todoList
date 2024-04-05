@@ -1,36 +1,97 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>캘린더</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캘린더</title>
 
-  <meta name=”description” content=”캘린더로 일정관리를 도와드려요!”>
-  <link href="../css/common.css" rel="stylesheet">
-  <link href="../css/detailList.css" rel="stylesheet">
-</head>
-<body>
-
-  <!-- 메인 -->
-  <main>
-    <div id="task_modal">
-      <p class="task_modal-head">
-        일정을 확인해 보세요
-        <button class="close_btn"></button>
-      </p>
-      <div class="task_modal-body">
-        <ul id="timeline">
-          <li></li>
-        </ul>
-        <div class="task_list_wrap">
-          <ul id="task_list">
-            <li class="task_list-item rest"></li>
-            <li class="task_list-item task"></li>
-            <li class="task_list-item exercise"></li>
-          </ul>
+    <meta name="”description”" content="”캘린더로" 일정관리를 도와드려요!” />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/detailList.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+    />
+  </head>
+  <body>
+    <!-- 고정 버튼 -->
+    <div class="fixed_btns">
+      <ul class="fixed_btns-list">
+        <li>
+          <b>✨ AI채팅</b>
+          <span>
+            AI추천을 통해<br />
+            일정을 추가해보세요!
+          </span>
+        </li>
+        <li>
+          <b>✏️ 일정추가</b>
+          <span>
+            계획하신 일을<br />
+            직접 추가해보세요!
+          </span>
+        </li>
+      </ul>
+      <button>
+        <p><span class="lnr lnr-cross"></span></p>
+      </button>
+    </div>
+    <script>
+      const fixedBtn = document.querySelector('.fixed_btns')
+      fixedBtn.querySelector('button').addEventListener('click',function(){
+        fixedBtn.classList.toggle('is-active')
+      })
+    </script>
+    <!-- 메인 -->
+    <main class="main">
+      <div id="task_modal">
+        <div class="task_modal-head">
+          <h2>일정을 확인해 보세요</h2>
+          <button class="close_btn"><span class="lnr lnr-cross"></span></button>
+        </div>
+        <div class="task_modal-body">
+          <!-- 타임라인 -->
+          <div class="timeline_wrap">
+            <ul id="timeline">
+              <li>12:00</li>
+              <li>12:00</li>
+              <li>12:00</li>
+            </ul>
+          </div>
+          <!-- 일정 리스트 -->
+          <div class="task_list_wrap">
+            <ul id="task_list">
+              <li class="task_list-item rest">
+                <span class="label"></span>
+                <span class="text">할 일 1</span>
+              </li>
+              <li class="task_list-item task">
+                <span class="label"></span>
+                <span class="text">할 일 2</span>
+              </li>
+              <li class="task_list-item exercise">
+                <span class="label"></span>
+                <span class="text">할 일 3</span>
+              </li>
+            </ul>
+            <div class="add_task_wrap">
+              <button id="add_task">
+                <p>
+                  <span class="lnr lnr-cross"></span>
+                </p>
+              </button>
+            </div>
+          </div>
+          <!-- 수정 -->
+          <div id="edit_box">
+            <p class="edit_box-list">
+              <span class="date">24.04.04</span>
+              <span class="time">12:24</span>
+            </p>
+            <p class="edit_box-tit">일정 1일정 1일정 1일정1일정1일정</p>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
