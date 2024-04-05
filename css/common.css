@@ -20,3 +20,105 @@
   display: inline-block;
   clear: both;
 }
+
+/* 캘린더 전체 컨테이너 */
+
+.calendarContainer{
+  width: 980px;
+  height: 100%;
+  background-color: #0b0c0d;
+  padding-bottom: 46px;
+  border-radius: 20px;
+}
+
+.calendarContainer .calendarTitle {
+  color: #f2f2f2;
+  margin-left: 24px;
+  padding-top: 16px;
+ 
+
+
+}
+
+.calendarContainer .calendarTitle .year{
+  font-size: 20px;
+}
+
+.calendarContainer .calendarTitle .month{
+  font-size: 46px;
+}
+
+.calendarContainer .calendarDate {
+  /* background: #f2f2f2; */
+  width: 96%;
+  margin-left:auto; margin-right:auto;
+  /* height: ; */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* 캘린더 테이블 */
+
+.calendarContainer .calendarDate table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  overflow: auto;
+  word-break: break-all;
+  /* height: 520px; */
+  
+  }
+
+.calendarContainer .calendarDate .calendarDay {
+  background: #40403e;
+  color: #f2f2f2;
+  height: 40px;
+  
+}
+
+.calendarContainer .calendarDate .calendarDay th {
+  text-align: center;
+  font-size: 16px;
+  border-left: 1px solid #0b0c0d;
+
+}
+
+.calendarContainer .calendarDate tbody {
+  
+  background: #f2f2f2;
+
+  
+}
+
+
+.calendarContainer .calendarDate tbody tr td {
+  border-left: 1px solid #0b0c0d;
+  border-bottom: 1px solid #0b0c0d;
+  font-size: 14px;
+  vertical-align: top;
+  padding-left: 5px;
+  color: #888c8c;
+  height: 100px;
+  
+}
+
+
+.calendarContainer .calendarDate tbody .today {
+  background: #40403e;
+  border-radius: 50%;
+  width: 20px;
+
+}
+.calendarContainer .calendarDate tbody tr td .task_list{
+  /* height: 180px; */
+  height: calc(100% - 20px);
+  overflow-y: scroll;
+
+}
+
+.calendarContainer .calendarDate tbody tr td .task_list .task-item {
+  background: #888c8c;
+  margin: 2px 6px 6px 0px;
+  color: #0b0c0d;
+  font-size: 16px;
+}

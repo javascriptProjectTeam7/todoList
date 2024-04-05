@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <meta name=”description” content=”캘린더로 일정관리를 도와드려요!”>
   <link href="./css/common.css" rel="stylesheet">
 </head>
+
 <body>
   <!-- 좌측 하단 고정 메뉴 -->
   <div>
@@ -16,6 +18,92 @@
   <!-- 메인 -->
   <main>
     <!-- 캘린더 영역 -->
+    <div class="calendarContainer">
+      <div class="calendarTitle">
+        <span class="year">2024.</span>
+        <span class="month">01</span>
+      </div>
+      <div class="calendarDate">
+        <div>
+          <table>
+            <thead>
+              <!-- 캘린더 요일 표시 -->
+              <tr class="calendarDay">
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 캘린더 날짜 표시 -->
+              <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>
+                  <div class="date today">
+                    10
+                  </div>
+                  <div class="task_list">
+                    <p class="task-item">할 일 1</p>
+                    <p class="task-item">할 일 1</p>
+                    <p class="task-item">할 일 1</p>
+                    <p class="task-item">할 일 1</p>
+                    <p class="task-item">할 일 1</p>
+                    <p class="task-item">할 일 1</p>
+                  </div>
+                </td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+              </tr>
+              <tr>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
   </main>
 </body>
+
 </html>
