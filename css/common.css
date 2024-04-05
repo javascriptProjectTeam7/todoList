@@ -14,8 +14,6 @@
   display: none;
 }
 
-.clearfix{
-}
 .clearfix::after{
   content: '';
   display: inline-block;

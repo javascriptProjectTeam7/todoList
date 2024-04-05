@@ -8,8 +8,7 @@
   background-color: #F8F8F8;
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.08);
   border-radius: 22px;
-  padding: 26px 0 60px 24px;
-
+  padding: 26px 0 80px 24px;
 }
 .task_modal-head{
   display: flex;
@@ -107,7 +106,6 @@
   font-size: 14px;
   font-weight: 500;
 }
-.add_task_wrap{}
 #add_task{
   width: calc(100% - 45px);
   height: 48px;
@@ -156,4 +154,5 @@
 .edit_box-list span{
   font-size: 14px;
   color: #40403E;
+  pointer-events: none;
 }

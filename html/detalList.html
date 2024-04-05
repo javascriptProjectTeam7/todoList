@@ -37,13 +37,17 @@
       </button>
     </div>
     <script>
-      const fixedBtn = document.querySelector('.fixed_btns')
-      fixedBtn.querySelector('button').addEventListener('click',function(){
-        fixedBtn.classList.toggle('is-active')
+      const $fixedBtn = document.querySelector('.fixed_btns')
+      $fixedBtn.querySelector('button').addEventListener('click',function(){
+        $fixedBtn.classList.toggle('is-active')
       })
     </script>
+
+
+
     <!-- 메인 -->
     <main class="main">
+      <!-- 일정 모달 -->
       <div id="task_modal">
         <div class="task_modal-head">
           <h2>일정을 확인해 보세요</h2>
@@ -90,6 +94,20 @@
             </p>
             <p class="edit_box-tit">일정 1일정 1일정 1일정1일정1일정</p>
           </div>
+          <script>
+            const $editBox = document.getElementById('edit_box');
+            const $taskList = document.getElementById('task_list')
+
+
+            $taskList.addEventListener('click',(e)=>{
+              if(!e.target === "task_list-item") return;
+             
+              const positionX = e.clientX;
+              const positionY = e.clientY;
+
+              
+            })
+          </script>
         </div>
       </div>
     </main>
