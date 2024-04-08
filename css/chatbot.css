@@ -1,0 +1,182 @@
+.main{
+    position: relative;
+    
+    display: flex;
+    justify-content: end;
+    
+    width: 1200px;
+    min-height: 100vh;
+    
+    background-color: darkgreen;
+    
+    font-size: 16px;
+}
+
+
+/* chatbot-container 좌측에 위치하게 만듬 */
+#chatbot-container{
+    position: absolute;
+    top: 10%;
+    
+    width: 450px;
+    height: 90vh;
+    
+    border-radius: 15px;
+    background-color: #f8f8f8;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.actionBox_wrap{
+    height: calc(100% - 140px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+}
+/* 상단 중간 하단으로 나눈 후 css 적용 */
+#chatbot-container .actionBox#top{
+    color: #F2F2F2;
+    border-radius: 15px 15px 0px 0px;
+}
+
+/* input, top 사이즈 조절 */
+#chatbot-container .actionBox#top,
+#chatbot-container .actionBox#input{
+    height: 70px;
+    background-color: #0b0c0d;
+
+}
+
+
+
+/* =============================== */
+/* 캘리에게 물어보세요 파트 */
+#chatbot-container .actionBox.side#top{
+    color: #F2F2F2;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+#chatbot-container .actionBox.side#top .top-section{
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#chatbot-container .actionBox.side#top .top-section div{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    font-weight: 500;
+}
+
+#chatbot-container .actionBox.side#top .top-section span{
+    font-size: 30px;
+    padding: 10px;
+    font-weight: 500;
+}
+#chatbot-container .actionBox.side#top .top-section span:hover{
+    font-weight: 700;
+
+}
+
+
+/* =============================== */
+/* 무엇을 도와드릴까요? */
+/* 초기 채팅 창 */
+#chatbot-container .actionBox#chatPart{
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
+}
+#chatbot-container .actionBox#chatPart #help{
+    margin-bottom: 18px;
+    text-indent: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* 선택 옵션들 */
+
+#chatbot-container .actionBox#chatPart ul{
+    /* background-color: tomato; */
+    /* height: 170px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+#chatbot-container .actionBox#chatPart li {
+    margin-bottom: 10px;
+    display:  flex;
+    align-items: baseline;
+}
+#chatbot-container .actionBox#chatPart li button{
+    background: #F2F2F2;
+    border: 1px solid #40403e;
+    color: #40403e;
+    padding: 9px 19px 11px 16px;
+    border-radius: 500px;
+    width: fit-content;
+    /* height: 34px; */
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    /* text-indent: 15px; */
+    word-spacing: 3px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+#chatbot-container .actionBox#chatPart li span{
+    font-size: 13px;
+    color: #40403e90;
+    padding-left: 9px;
+}
+#chatbot-container .actionBox#chatPart li:hover button{
+    background-color: #40403e;
+    border-color: #40403e;
+    color: #fff;
+    transition: 0.2s;
+}
+
+/* 채팅 */
+
+
+
+/* =============================== */
+/* input section */
+/* input박스 하단 곡률 조정 */
+
+#chatbot-container .actionBox.side#input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+#chatbot-container .actionBox.side#input input{
+    font-size: 20px;
+    color: #F2F2F2;
+    width: 500px;
+}
+#chatbot-container .actionBox.side#input #arrow{
+    font-size: 30px;
+}
+#chatbot-container .actionBox.side#input #arrow::before{
+    display: none;
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+/* animation */
+/* 챗봇 선택 시 채팅창 아래에서 위로 올라오기 */
+
+
