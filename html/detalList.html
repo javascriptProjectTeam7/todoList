@@ -54,26 +54,22 @@
           <button class="close_btn"><span class="lnr lnr-cross"></span></button>
         </div>
         <div class="task_modal-body">
-          <!-- 타임라인 -->
-          <div class="timeline_wrap">
-            <ul id="timeline">
-              <li>12:00</li>
-              <li>12:00</li>
-              <li>12:00</li>
-            </ul>
-          </div>
+         
           <!-- 일정 리스트 -->
           <div class="task_list_wrap">
             <ul id="task_list">
               <li class="task_list-item rest">
+                <span class="time">12:00</span>
                 <span class="label"></span>
                 <span class="text">할 일 1</span>
               </li>
               <li class="task_list-item task">
+                <span class="time">13:00</span>
                 <span class="label"></span>
                 <span class="text">할 일 2</span>
               </li>
               <li class="task_list-item exercise">
+                <span class="time">14:00</span>
                 <span class="label"></span>
                 <span class="text">할 일 3</span>
               </li>
@@ -101,10 +97,8 @@
 
             $taskList.addEventListener('click',(e)=>{
               if(!e.target === "task_list-item") return;
-             
               const positionX = e.clientX;
               const positionY = e.clientY;
-
               
             })
           </script>
