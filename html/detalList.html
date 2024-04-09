@@ -12,6 +12,8 @@
       rel="stylesheet"
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
+    <script type="module" src="../js/taskData.js" defer></script>
+    <script type="module" src="../js/detailList.js" defer></script>
   </head>
   <body>
     <!-- 고정 버튼 -->
@@ -50,7 +52,7 @@
       <!-- 일정 모달 -->
       <div id="task_modal">
         <div class="task_modal-head">
-          <h2>일정을 확인해 보세요</h2>
+          <h2><b id="h2Date" class="date">04/04</b> 일정을 확인해 보세요</h2>
           <button class="close_btn"><span class="lnr lnr-cross"></span></button>
         </div>
         <div class="task_modal-body">
@@ -58,7 +60,8 @@
           <!-- 일정 리스트 -->
           <div class="task_list_wrap">
             <ul id="task_list">
-              <li class="task_list-item rest">
+              <li class="task_list-item nothing">일정이 없습니다.</li>
+              <!-- <li class="task_list-item rest">
                 <span class="time">12:00</span>
                 <span class="label"></span>
                 <span class="text">할 일 1</span>
@@ -72,7 +75,7 @@
                 <span class="time">14:00</span>
                 <span class="label"></span>
                 <span class="text">할 일 3</span>
-              </li>
+              </li> -->
             </ul>
             <div class="add_task_wrap">
               <button id="add_task">

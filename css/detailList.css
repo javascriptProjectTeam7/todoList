@@ -68,7 +68,10 @@
   flex-direction: column;
   align-items: flex-end;
 }
+/* #task_list.is-null{
+  min-height: 300px;
 
+} */
 #task_list .task_list-item{
   width: calc(100% - 65px);
   height: 46px;
@@ -78,6 +81,16 @@
   margin-bottom: 12px;
   display: flex;
   position: relative;
+}
+#task_list .task_list-item.nothing{
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  font-size: 14px;
+  color: #888C8C;
+  display: none;
 }
 #task_list .task_list-item:last-child{
   margin-bottom: 0;
