@@ -17,22 +17,24 @@ const $categoryInputs = document.querySelectorAll(
 );
 
 // 일정 추가 모달 활성화
-[$addTaskByUserBtn,$addTaskBtn].forEach(btn=>{
+[$addTaskByUserBtn, $addTaskBtn].forEach((btn) => {
   btn.addEventListener("click", () => {
     $addTaskModal.classList.add("is-active");
   });
-})
+});
 // 일정 추가 모달 비활성화
 $addTaskModalCloseBtn.addEventListener("click", () => {
+  setModalInitaial();
+  setNow();
+});
+function setModalInitaial() {
   $addTaskModal.classList.remove("is-active");
+  $addTaskModal.querySelector(".add_task-head > input").value = "";
   $categoryInputs.forEach((input) => {
     input.checked = false;
   });
   $addTaskModal.classList.remove("task", "rest", "exercise");
-  setNow();
-});
-
-
+}
 
 $categoryInputs.forEach(($input) => {
   $input.addEventListener("click", () => {
@@ -53,8 +55,8 @@ function setNow() {
   // 현재 날짜와 시간을 가져와서 초깃값 설정
   const now = new Date();
 
-  $dateInput.value = now.toISOString().slice(0, 10);;
-  $timeInput.value = now.toISOString().slice(11, 16);;
+  $dateInput.value = now.toISOString().slice(0, 10);
+  $timeInput.value = now.toISOString().slice(11, 16);
 }
 
 setNow();
@@ -78,23 +80,21 @@ $addTaskModalSubmitBtn.addEventListener("click", () => {
     day: String(date.getDate()).padStart(2, "0"),
   };
   const { year, month, day } = dateSet;
+  console.log(year, month, day);
   // 시간
   const time = $timeInput.value;
   const [hour, minute] = time.split(":");
 
-  const matchingData = obj =>{
-    return (year === obj.date.year &&
-    month === obj.date.month &&
-    day === obj.date.day)
-  }
+  const matchingData = (obj) => {
+    console.log("obj:", obj);
+    if (obj === null) return;
+    return (
+      year === obj.date.year && month === obj.date.month && day === obj.date.day
+    );
+  };
   // 같은 날짜의 데이터 찾기
-  const matchedDayTaskData = taskData.find((task) => {
-    if (
-      matchingData(task)
-    ) {
-      return task;
-    }
-  });
+  const matchedDayTaskData = taskData.find((task) => matchingData(task));
+  // console.log('matching: ',matchingData(task));
 
   const newTodoList = {
     time: `${hour}:${minute}`,
@@ -119,14 +119,13 @@ $addTaskModalSubmitBtn.addEventListener("click", () => {
     };
     taskData.push(newTaskData);
   }
-  // 현재 선택된 날짜의 투두 리스트 추가시 ui 추가
-  if (
-    matchingData(selectedDay)
-  ) {
-    $taskList.append(createTaskLi(newTodoList));
-  }
+  // // 현재 선택된 날짜의 투두 리스트 추가시 ui 추가
+  console.log("sd:", selectedDay);
+
+  $taskList.append(createTaskLi(newTodoList));
 
   $addTaskModal.classList.remove("is-active");
 
+  setModalInitaial();
   console.log(taskData);
 });

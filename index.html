@@ -233,6 +233,12 @@
     $fixedBtn.querySelector("button").addEventListener("click", function () {
       $fixedBtn.classList.toggle("is-active");
     });
+    [...$fixedBtn.querySelectorAll('li')].forEach($li=>{
+      $li.addEventListener('click',function(){
+        $li.parentElement.parentElement.classList.remove('is-active')
+
+      })
+    })
     const $addTaskByAIBtn = document.getElementById('add_task_by_ai')
     const $chatbotModal = document.getElementById('chatbot-container')
     $addTaskByAIBtn.addEventListener('click',function(){
