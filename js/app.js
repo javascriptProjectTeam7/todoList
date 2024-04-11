@@ -31,7 +31,17 @@ const renderCalendar = () => {
 
   const dates = PDates.concat(TDates, NDates);
 
-  const modifiedDates = dates.map(date => `<div class="date">${date}</div>`);
+   // 각 날짜에 대한 데이터셋 설정
+   const modifiedDates = dates.map(day => {
+    const dateElement = document.createElement('div');
+    dateElement.classList.add('date');
+    dateElement.textContent = day;
+    dateElement.dataset.year = viewYear;
+    dateElement.dataset.month = String(viewMonth).padStart(2, '0');
+    dateElement.dataset.day = String(day).padStart(2, '0');
+    return dateElement.outerHTML;
+  });
+  // const modifiedDates = dates.map(date => `<div class="date" >${date}</div>`); // 년도 월 날짜 각각 데이터셋으로 (2024-)
 
   document.querySelector(".dates").innerHTML = modifiedDates.join("");
 };
