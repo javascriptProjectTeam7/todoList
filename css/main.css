@@ -83,7 +83,7 @@ body {
 }
 #calendarMain .days {
   display: flex;
-  margin: 0 0 10px 0;
+  margin: 10px 0 0 0;
   color: #888c8c;
   padding: 20px 0;
 }
@@ -92,10 +92,10 @@ body {
   width: calc(100% / 7);
   text-align: center;
   color: #888c8c;
-;
+
   /* border-top: 1px solid #888c8c;
   border-right: 1px solid #888c8c; */
-  font-size: 14px;
+  font-size: 16px;
 
 }
 
