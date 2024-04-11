@@ -38,6 +38,7 @@ const renderCalendar = () => {
     dateElement.textContent = day;
     dateElement.dataset.year = viewYear;
     dateElement.dataset.month = String(viewMonth + 1).padStart(2, '0');
+    
     dateElement.dataset.day = String(day).padStart(2, '0');
     return dateElement.outerHTML;
   });
