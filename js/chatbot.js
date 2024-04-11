@@ -4,6 +4,7 @@ console.log(taskData[2]);
 
 // 전역변수 정의
 // const $callyResponse = document.getElementById("callyResponse");
+
 const $input = document.getElementById("input");
 const $arrow = document.getElementById("arrow");
 
@@ -14,32 +15,248 @@ const $chatbotContainer = document.getElementById("chatbot-container");
 const $chatPart = document.getElementById("chatPart");
 const $option = $chatPart.querySelector("li");
 
+
 // 함수 정의
 
 // 입력받은 날짜를 기준으로 주변 7개의 task간 가장 적게한 카테고리 리턴
-function countCategory(date) {
-    let workCount = 0;
-    let restCount = 0;
-    let exceriseCount = 0;
-    let min = workCount;
-    
-    if(true){
 
-    }
-    taskData[target];
-    for (i = 1; i < 3; i++) {
-        taskData[target - i];
+function getDateFromUser(buttonText) {
+    // 날짜를 입력받을 폼 생성
+    const $dateForm = document.createElement("div");
+    $dateForm.classList.add("callyResponse");
 
+    $dateForm.innerHTML = `
+        <p class="input_wrap">
+            ${buttonText}을 선택하셨습니다. <br> 원하는 날짜를 선택해주세요: <br>
+            <input type="date" id="date_input" />
+            <input type="time" id="time_input" />
+            <button id="confirm">확인</button>
+        </p>`;
 
-        taskData[target + i];
-    }
+    $response.appendChild($dateForm);
 
-    // 그 날짜의 객체 날짜 전달
+    // 사용자 입력 데이터를 저장할 객체
+    let userDate = {
+        date: {
+            year: "",
+            month: "",
+            day: "",
+        },
+        todoList: [
+            {
+                time: "",
+                title: "",
+                category: "",
+            },
+        ],
+    };
 
-    return min;
+    // 확인 버튼 클릭 이벤트 처리
+    const $confirmButton = document.getElementById("confirm");
+    const $dateInput = document.getElementById("date_input");
+    const $timeInput = document.getElementById("time_input");
+    $confirmButton.addEventListener("click", () => {
+        // 사용자가 입력한 날짜와 시간 가져오기
+        const selectedDate = $dateInput.value;
+        const selectedTime = $timeInput.value;
+
+        if (selectedDate !== "" && selectedTime !== "") {
+            // 사용자가 날짜와 시간을 모두 선택한 경우
+            const dateParts = selectedDate.split("-");
+            const year = parseInt(dateParts[0]);
+            const month = parseInt(dateParts[1]);
+            const date = parseInt(dateParts[2]);
+
+            // 사용자 입력 데이터 저장
+            userDate.date.year = year;
+            userDate.date.month = month;
+            userDate.date.day = date;
+            userDate.todoList[0].time = selectedTime;
+        } else {
+            const currentDate = new Date();
+
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더해줍니다.
+            const currentDay = currentDate.getDate();
+            const currentHour = currentDate.getHours();
+            const currentMinute = currentDate.getMinutes();
+            userDate.date.year = currentYear;
+            userDate.date.month = currentMonth;
+            userDate.date.day = currentDay;
+
+            userDate.todoList[0].time = `${currentHour}:${currentMinute}`;
+        }
+
+        return userDate;
+    });
 }
 
-// 함수 실행
+// 해야함..?
+function checkSchedule(buttonText) {
+    // userDate를 보냄
+    getRecentTodo(buttonText);
+
+    // li 묶음을 #callyResponse에 추가
+}
+
+// 채팅에서 새로운 스케줄 추가
+function addSechdule(buttonText) {
+    // 사용자에게 일정 추가할 날짜 받기
+    const DateInfo = getDateFromUser(buttonText);
+
+    // 받은 날짜, 년도, month가 해당되는 날짜 객체 가져오기
+    // 계속 gmt 시간만 가져옴 ㅠㅜㅠㅜㅠ 해결해야해~
+    const $confirmButton = document.getElementById("confirm");
+    $confirmButton.addEventListener('click', (e)=>{
+        const $todo_list = document.createElement('div');
+        $todo_list.innerHTML = `<div>
+                                    <div>어떤 일을 추가하고 싶으신가요? <br>추가하고 싶은 할 일을 적어주세요 <br>(카테고리를 선택해주세요!)</div>
+                                    <p id="categoryOptions">
+                                        <label>
+                                        <button id="task">일</button>                              
+                                        </label>
+                                        <label>
+                                        <button id="exercise">운동</button>
+                                        </label>
+                                        <label>
+                                        <button id="rest">휴식</button>
+                                        </label>
+                                    </p>
+                                </div>`;
+    
+        $todo_list.classList.add("callyResponse");
+
+        $response.appendChild($todo_list);
+    })
+    // 할 일, 카테고리 입력 받기
+    // 입력받은 값 todo list에  또다른 객체로 추가
+}
+
+function getRecentData(userDate) {
+    const targetId = userDate.id;
+    let recentData = [];
+    let boundary = 7;
+
+    if (targetId < 7) {
+        for (let i = 0; i < targetId; i++) {
+            recentData.push(...taskData[i]);
+        }
+    } else {
+        for (let i = targetId; i < targetId + boundary; i++) {
+            recentData.push(...taskData[i]);
+        }
+    }
+    return recentData;
+}
+
+// 최근동안 어떠한 일을 적게 했는지 알아봄
+function checkRecentWork(buttonText) {
+    let workCount = 0;
+    let exerciseCount = 0;
+    let restCount = 0;
+
+    const userDate = getDateFromUser(buttonText);
+
+    // 최근 데이터 불러오기
+    const recentData = getRecentData(userDate);
+
+    recentData.forEach((entry) => {
+        entry.todoList.forEach((todo) => {
+            if (todo.category === "일") {
+                workCount++;
+            } else if (todo.category === "운동") {
+                exerciseCount++;
+            } else if (todo.category === "휴식") {
+                restCount++;
+            }
+        });
+    });
+
+    const min = Math.min(workCount, exceriseCount, restCount);
+
+    return [min, userDate];
+}
+
+// 새로운 할일 추가(챗봇 추천 받은거로)
+function addNewTodoBasedOnChat(less, userDate) {
+    // const $likeBtn = document.getElementById('likeBtn');
+}
+
+// 챗봇에게 할일 추천 받기
+function recommendTodo(buttonText) {
+    //입력 받은 날짜를 기반으로 지금까지 있는 task 중 어떠한 일을 가장 많이 했는지 알려줌
+    const returnedData = checkRecentWork(buttonText);
+    let min = returnedData[0];
+    let userDate = returnedData[1];
+    let less = "";
+
+    if (min === workCount) {
+        less = "일";
+    } else if (min === exceriseCount) {
+        less = "운동";
+    } else {
+        less = "휴식";
+    }
+
+    const $recommendation = document.createElement("div");
+    $recommendation.innerHTML = `최근동안 가장 적게 활동한 ${less}을 해보시는 건 어떨까요? 
+                                <button id="likeBtn" type = "radio">좋아요</button> 
+                                <button id="disBtn" type = "radio">실어요</button> `;
+    $response.appendChild($recommendation);
+
+    // 좋아요 누르면 -> taksData에 추가됨
+    const $likeBtn = document.getElementById("likeBtn");
+    if (($likeBtn.checked = "true")) {
+        addNewTodoBasedOnChat(less, userDate);
+    } else {
+        const $noNeed = document.createElement("div");
+        $noNeed.innerHTML = `필요 없으시군요! 그럼 다음에 이용해보세요 ;)`;
+        $response.appendChild($noNeed);
+    }
+}
+
+// 사용자가 궁금한 사항 직접 입력함
+function customByUser(buttonText) {
+    // 아직 지원하지 않는 기능입니다.
+    const $notYet = document.createElement("div");
+    $notYet.innerHTML = `${buttonText}은 <br>현재 지원하지 않는 기능입니다. <br>업데이트 예정입니다.`;
+    $notYet.classList.add("callyResponse");
+    $response.appendChild($notYet);
+}
+
+$chatPart.addEventListener("click", (e) => {
+    // Check if the clicked element is a <button> tag
+    const $clicked = e.target.closest("li");
+    if ($clicked) {
+        // Retrieve the text content of the clicked <button> tag
+        const buttonText = e.target.textContent.trim();
+        // Perform different actions based on the text content
+        switch (buttonText) {
+            case "1. 일정 조회":
+                // Code to handle "일정 조회" option
+                console.log(e.target);
+                console.log("일정 조회 clicked");
+                checkSchedule(buttonText);
+                break;
+            case "2. 일정 추가":
+                console.log(e.target);
+                console.log("일정 추가 clicked");
+                addSechdule(buttonText);
+                break;
+            case "3. 일정 추천":
+                console.log(e.target);
+                console.log("일정 추천 clicked");
+                recommendTodo(buttonText);
+                break;
+            case "4. 직접 입력":
+                customByUser(buttonText);
+                break;
+            default:
+                showFirstChat();
+                break;
+        }
+    }
+});
 
 //x누르면 화면 내리기
 $close.addEventListener("click", (e) => {
@@ -77,176 +294,4 @@ $input.parentElement.addEventListener("submit", (e) => {
 $arrow.addEventListener("click", (e) => {
     e.preventDefault();
     returnNewTodo();
-});
-
-// const returnCallyResponse = () => {
-//     // 첫번째 입력 받기
-//     // 사용자가 직접 입력(1,2,3,4 나 일정조회, 일정추가, 일정추천, 직접입력/ 을 직접 입력하고 전송함)
-//     // #chatPart 무엇을 도와드릴까요? 에서 4개중에 한개 선택함
-
-// };
-
-// const $userDate = (($input), e =>{
-//     $realInput = $input.querySelector('input');
-
-// })
-// 유저로부터 날짜 데이터 받기
-function getDateFromUser() {
-    const $date = document.createElement("div");
-    $date.innerHTML =
-        "수정을 원하는 날짜를 입력해주세요<br>(YYYY-MM-DD 형식으로 입력해주세요)";
-    $response.appendChild($date);
-    $date.classList.add("callyResponse");
-
-    // 사용자한테 날짜 입력받아야됨!!!!!
-    // 즉 li태그가 추가될 때까지 기다렸다가 그 값을 $userDate로 받아야함
-
-    const $userDate = $response.lastElementChild.textContent;
-    console.log($userDate);
-    const userDate = $userDate.trim();
-    const userDateCopy = userDate;
-
-    let userDateInfo = {
-        year: 0,
-        month: 0,
-        date: 0,
-    };
-
-    if (userDate.length !== 10) {
-        // 입력값이 제대로 되지 않았다면...
-        console.log("error");
-        const $inputError = document.createElement("div");
-        $inputError.textContent = "어허~~ YYYY-MM-DD 형식으로 입력해주세요";
-        $response.appendChild($inputError);
-        $inputError.classList.add("callyResponse");
-    } else {
-        // 사용자가 입력한 날짜데이터 년도, 월, 일로 추출
-        const dateParts = userDateCopy.split("-");
-        const year = parseInt(dateParts[0]);
-        const month = parseInt(dateParts[1]);
-        const date = parseInt(dateParts[2]);
-
-        userDateInfo.year = year;
-        userDateInfo.month = month;
-        userDateInfo.date = date;
-    }
-
-    console.log(userDateInfo);
-    // 객체로 리턴
-    return userDateInfo;
-}
-
-function getRecentTodo(date) {
-    let index = date;
-    // 입력받은 날짜를 기준으로 앞 뒤 3일 todoList.title 가져와서 출력
-
-    // 출력하려면 todolist.title을 먼저 리스트에 담아서 그 갯수를 세고
-    // 갯수 만큼 div 추가해야함
-    // 각각의 todo를 담을 싸개
-    const $chekedSs = document.createElement("div");
-    $chekedSs.classList.add("callyResponse");
-    $response.appendChild($chekedSs);
-
-    // 추가하는 함수
-    // todoitems todoList에서 title객체만 뺴서 가져와서 todo 에 집어넣기
-    let todo = [];
-    if (index > 3) {
-        for (let i = 1; i <= 3; i++) {
-            taskData[index - i];
-            taskData[index + i];
-        }
-    } else {
-        // ㅇㅖ외처리 해야함
-        for (let i = index; i <= 7 - index; i++) {
-            taskData[i];
-        }
-    }
-    for (let i = 0; i < todo.length; i++) {
-        const $chekeditem = document.createElement("div");
-        $chekeditem.innerHTML = `${i + 1}. ${todo[i]}`;
-        $chekedSs.appendChild($chekeditem);
-    }
-}
-function checkSchedule() {
-    getDateFromUser();
-
-    // getRecentTodo();
-
-    // li 묶음을 #callyResponse에 추가
-}
-
-// 채팅에서 새로운 스케줄 추가
-function addSechdule() {
-    // 사용자에게 일정 추가할 날짜 받기
-    getDateFromUser();
-
-    // 받은 날짜, 년도, month가 해당되는 날짜 객체 가져오기
-    userDateInfo.year;
-    userDateInfo.month;
-    userDateInfo.date;
-
-    // 추가할 시간, 할 일, 카테고리 입력 받기
-    const $newSchedule = document.createElement("div");
-    $newSchedule.textContent = `${userDateInfo.year}년 ${userDateInfo.month}월 ${userDateInfo.date}일에 추가하고 싶은 일정을 적어주세요`;
-    $response.appendChild($newSchedule);
-    // 입력받은 값 todo list에  또다른 객체로 추가
-}
-// 최근동안 어떠한 일을 적게 했는지 알아봄
-function checkRecentWork(min) {}
-// 챗봇에게 할일 추천 받기
-function recommendTodo() {
-    // 어떤 날짜에 할 일을 추가하고 싶은지 물어봄
-    getDateFromUser();
-
-    //입력 받은 날짜를 기반으로 지금까지 있는 task 중 어떠한 일을 가장 많이 했는지 알려줌
-    checkRecentWork();
-
-    // 가장 많이한 일을 출력하며, 그 날짜를 기준으로 최근 일주일간 가장많이 한 일은 땡땡 이군요!
-    //
-}
-
-// 사용자가 궁금한 사항 직접 입력함
-function customByUser() {
-    // 아직 지원하지 않는 기능입니다.
-    const $notYet = document.createElement("div");
-    $notYet.textContent = "현재 지원하지 않는 기능입니다.";
-    $notYet.classList.add("callyResponse");
-    $response.appendChild($notYet);
-}
-
-$chatPart.addEventListener("click", (e) => {
-    // Check if the clicked element is a <button> tag
-    const $clicked = e.target.closest("li");
-    if ($clicked) {
-        // Retrieve the text content of the clicked <button> tag
-        const buttonText = e.target.textContent.trim();
-        // Perform different actions based on the text content
-        switch (buttonText) {
-            case "1. 일정 조회":
-                // Code to handle "일정 조회" option
-                console.log(e.target);
-                console.log("일정 조회 clicked");
-                checkSchedule();
-                break;
-            case "2. 일정 추가":
-                console.log(e.target);
-                console.log("일정 추가 clicked");
-                addSechdule();
-                break;
-            case "3. 일정 추천":
-                console.log(e.target);
-                console.log("일정 추천 clicked");
-                recommendTodo();
-                break;
-            case "4. 직접 입력":
-                customByUser();
-                getDateFromUser();
-                console.log(e.target);
-                console.log("직접 입력 clicked");
-                break;
-            default:
-                printReDo();
-                break;
-        }
-    }
 });
