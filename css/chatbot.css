@@ -1,4 +1,4 @@
-.main{
+/* .main{
     position: relative;
     
     display: flex;
@@ -10,13 +10,13 @@
     background-color: darkgreen;
     
     font-size: 16px;
-}
+} */
 
 
 /* chatbot-container 좌측에 위치하게 만듬 */
 #chatbot-container{
-    position: absolute;
-    top: 10%;
+    position: fixed;
+    right: calc((100% - 1400px)/2);
     
     width: 450px;
     
@@ -28,10 +28,17 @@
     justify-content: space-between;
     
     transition: height 0.5s ease;
-    height: 90vh;
-    /* overflow: hidden; */
-}
+    height: 95vh;
 
+    /* bottom: 0; */
+
+    bottom: -100%;
+    transition: bottom .8s ease-out;
+}
+#chatbot-container.is-active{
+    bottom: 0;
+
+}
 .actionBox_wrap{
     height: calc(100% - 140px);
     overflow-y: scroll;

@@ -6,14 +6,14 @@ const selectedDay = taskData.find(
   (task) => task.date.month === "04" && task.date.day === "20"
 );
 // h3 설정 == 수정 요함
-const $h3Date = document.getElementById("h2Date");
-$h3Date.innerHTML = `${selectedDay.date.month}월 ${selectedDay.date.day}일`;
+// const $h3Date = document.getElementById("h2Date");
+// $h3Date.innerHTML = `${selectedDay.date.month}월 ${selectedDay.date.day}일`;
 
 const $taskList = document.getElementById("task_list");
 function setListNull(){
 const $nothingLi = document.querySelector("#task_list .task_list-item.nothing");
   console.log(selectedDay);
-  if (selectedDay.todoList.length) {
+  if (selectedDay) {
     // 해당 날짜에 일정이 있는 경우 ui
     $nothingLi.style.display = "none";
     addList();
