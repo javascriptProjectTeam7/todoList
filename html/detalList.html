@@ -12,6 +12,10 @@
       rel="stylesheet"
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
+    <script type="module" src="../js/taskData.js" defer></script>
+    <script type="module" src="../js/detailList.js" defer></script>
+    <script type="module" src="../js/addTaskModal.js" defer></script>
+    <script type="module" src="../js/detailListModify.js" defer></script>
   </head>
   <body>
     <!-- 고정 버튼 -->
@@ -24,41 +28,40 @@
             일정을 추가해보세요!
           </span>
         </li>
-        <li>
+        <li id="add_task_by_user">
           <b>✏️ 일정추가</b>
           <span>
             계획하신 일을<br />
             직접 추가해보세요!
           </span>
         </li>
+       
       </ul>
       <button>
         <p><span class="lnr lnr-cross"></span></p>
       </button>
     </div>
     <script>
-      const $fixedBtn = document.querySelector('.fixed_btns')
-      $fixedBtn.querySelector('button').addEventListener('click',function(){
-        $fixedBtn.classList.toggle('is-active')
-      })
+      const $fixedBtn = document.querySelector(".fixed_btns");
+      $fixedBtn.querySelector("button").addEventListener("click", function () {
+        $fixedBtn.classList.toggle("is-active");
+      });
     </script>
-
-
 
     <!-- 메인 -->
     <main class="main">
       <!-- 일정 모달 -->
       <div id="task_modal">
         <div class="task_modal-head">
-          <h2>일정을 확인해 보세요</h2>
+          <h2><b id="h2Date" class="date">04/04</b> 일정을 확인해 보세요</h2>
           <button class="close_btn"><span class="lnr lnr-cross"></span></button>
         </div>
         <div class="task_modal-body">
-         
           <!-- 일정 리스트 -->
           <div class="task_list_wrap">
             <ul id="task_list">
-              <li class="task_list-item rest">
+              <li class="task_list-item nothing">일정이 없습니다.</li>
+              <!-- <li class="task_list-item rest">
                 <span class="time">12:00</span>
                 <span class="label"></span>
                 <span class="text">할 일 1</span>
@@ -72,7 +75,7 @@
                 <span class="time">14:00</span>
                 <span class="label"></span>
                 <span class="text">할 일 3</span>
-              </li>
+              </li> -->
             </ul>
             <div class="add_task_wrap">
               <button id="add_task">
@@ -82,28 +85,70 @@
               </button>
             </div>
           </div>
-          <!-- 수정 -->
+          <!-- 수정 모달 -->
           <div id="edit_box">
-            <p class="edit_box-list">
-              <span class="date">24.04.04</span>
-              <span class="time">12:24</span>
-            </p>
-            <p class="edit_box-tit">일정 1일정 1일정 1일정1일정1일정</p>
+            <div class="edit_dep">
+              <div class="edit_box-list">
+                <p class="date">04.04</p>
+                <p class="time">12:24</p>
+              </div>
+              <div class="edit_box-tit">
+                <p class="text">
+                  <span></span>
+                  <button class="rewrite_btn">
+                    <span class="lnr lnr-pencil"></span>
+                  </button>
+                </p>
+                <p class="input">
+                  <input class="rewrite_input" />
+                  <span>
+                    <button class="check_btn">
+                      <span class="lnr lnr-checkmark-circle"></span>
+                    </button>
+                    <button class="cancel_btn"><span class="lnr lnr-cross-circle"></span></button>
+                  </span>
+                </p>
+              </div>
+            </div>
+           
+            <button id="del_btn"><span class="lnr lnr-trash"></span></button>
+
           </div>
           <script>
-            const $editBox = document.getElementById('edit_box');
-            const $taskList = document.getElementById('task_list')
-
-
-            $taskList.addEventListener('click',(e)=>{
-              if(!e.target === "task_list-item") return;
-              const positionX = e.clientX;
-              const positionY = e.clientY;
-              
-            })
+     
           </script>
         </div>
       </div>
+
+      <!-- 일정 추가 모달 -->
+      <div id="add_task_modal">
+        <p class="add_task-head">
+          <input type="text" placeholder="추가할 일을 입력하세요" />
+          <button class="check_btn"> <span class="lnr lnr-checkmark-circle"></span></button>
+          <button class="close_btn"><span class="lnr lnr-cross-circle"></span></button>
+        </p>
+        <div class="add_task-body">
+          <p>
+            <label>
+              <input type="radio" name="category" id="task" />
+              <span>일</span>
+            </label>
+            <label>
+              <input type="radio" name="category" id="rest" />
+              <span>휴식</span>
+            </label>
+            <label>
+              <input type="radio" name="category" id="exercise" />
+              <span>운동</span>
+            </label>
+          </p>
+          <p class="input_wrap">
+            <input type="date" id="date_input" />
+            <input type="time" id="time_input" />
+          </p>
+        </div>
+      </div>
+
     </main>
   </body>
 </html>

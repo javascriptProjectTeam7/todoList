@@ -1,47 +1,53 @@
 const taskData = [
   {
-    id:1,
-    date:{
-      year:'2024',
-      month:'04',
-      day:'05',
+    id: 1,
+    date: {
+      year: "2024",
+      month: "04",
+      day: "05",
     },
-    time:'12:00',
-    todoList:[
+    todoList: [
       {
-        title:"할 일1",
-        category:"일"
+        time: "12:00",
+        title: "할 일1",
+        category: "일",
       },
-    ]
+    ],
   },
   {
-    id:2,
-    date:{
-      year:'2024',
-      month:'04',
-      day:'10',
+    id: 2,
+    date: {
+      year: "2024",
+      month: "04",
+      day: "10",
     },
-    time:'18:00',
-    todoList:[
+    todoList: [
       {
-        title:"할 일2",
-        category:"휴식"
+        time: "18:00",
+        title: "할 일2",
+        category: "휴식",
       },
-    ]
+      {
+        time: "18:00",
+        title: "할 일2-2",
+        category: "일",
+      },
+    ],
   },
   {
-    id:3,
-    date:{
-      year:'2024',
-      month:'04',
-      day:'08',
+    id: 3,
+    date: {
+      year: "2024",
+      month: "04",
+      day: "08",
     },
-    time:'14:00',
-    todoList:[
+    todoList: [
       {
-        title:"할 일3",
-        category:"운동"
+        time: "14:00",
+        title: "할 일3",
+        category: "운동",
       },
-    ]
+    ],
   },
-]
+];
+export default taskData;
