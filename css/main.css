@@ -86,6 +86,7 @@ body {
   margin: 0 0 10px 0;
   color: #888c8c;
   padding: 20px 0;
+  
 }
 
 #calendarMain .day {
@@ -116,6 +117,7 @@ body {
   text-align: left;
   border-bottom: 1px solid #888c8c;
   border-left: 1px solid #888c8c;
+  cursor: pointer;
 }
 
 #calendarMain .day:nth-child(7n + 1),

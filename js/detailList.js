@@ -32,5 +32,12 @@ function addList() {
   });
 }
 
-
+const $calendarDates = [...document.querySelectorAll('#calendarMain .date')]
+const $taskModal = document.getElementById('task_modal')
+$calendarDates.forEach(($date)=>{
+  $date.addEventListener('click',(e)=>{
+    console.log(e.target);
+    $taskModal.classList.add('is-active')
+  })
+})
 export {selectedDay,$taskList, setListNull};
