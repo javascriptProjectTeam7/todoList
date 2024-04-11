@@ -45,7 +45,7 @@ body {
 }
 
 #calendarMain .yearMonth {
-  font-size: 35px;
+  font-size: 32px;
   color: #f2f2f2;
   margin-left: 24px;
   padding-top: 16px;
@@ -83,7 +83,7 @@ body {
 }
 #calendarMain .days {
   display: flex;
-  margin: 0 0 10px 0;
+  margin: 10px 0 0 0;
   color: #888c8c;
   padding: 20px 0;
   
@@ -93,9 +93,10 @@ body {
   width: calc(100% / 7);
   text-align: center;
   color: #888c8c;
+
   /* border-top: 1px solid #888c8c;
   border-right: 1px solid #888c8c; */
-  font-size: 14px;
+  font-size: 16px;
 
 }
 
@@ -105,7 +106,7 @@ body {
   height: 500px;
   border-top: 1px solid #888c8c;
   border-right: 1px solid #888c8c;
-  color: #888c8c;
+  color: #0b0c0d;
   font-size: 14px;
   background: #f2f2f2;
   height: calc(100% - 60px);
