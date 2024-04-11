@@ -24,7 +24,7 @@
 
 .fixed_btns{
   position: fixed;
-  left: calc((100% - 980px)/2);
+  left: calc((100% - 1400px)/2);
   bottom: 5vh;
   z-index: 10;
 }
@@ -49,6 +49,7 @@
   pointer-events: none;
   transform: translateX(10px);
   transition:all .6s ease-out;
+  cursor: pointer;
 
 }
 .fixed_btns-list li:nth-child(1){
@@ -77,5 +78,4 @@
 }
 .fixed_btns > button span{
   color: #fff;
-
 }

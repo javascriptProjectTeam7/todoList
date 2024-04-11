@@ -1,7 +1,7 @@
 @import url(./reset.css);
 
 .main{
-  width: 980px;
+  width: 1400px;
   margin: 0 auto;
 }
 
@@ -30,8 +30,8 @@ body {
 }
 
 #calendarMain .container {
-  width: 980px;
-  /* height: 100%; */
+  width: 1400px;
+  height: 90vh;
   background-color: #0b0c0d;
   padding-bottom: 46px;
   border-radius: 20px;
@@ -78,13 +78,14 @@ body {
 
 #calendarMain .mainDate {
   padding: 0 20px 0 20px ;
+  height: calc(100% - 100px);
   
 }
 #calendarMain .days {
   display: flex;
   margin: 0 0 10px 0;
   color: #888c8c;
-  /* padding-top: 5px; */
+  padding: 20px 0;
 }
 
 #calendarMain .day {
@@ -107,7 +108,7 @@ body {
   color: #0b0c0d;
   font-size: 14px;
   background: #f2f2f2;
-
+  height: calc(100% - 60px);
 }
 
 #calendarMain .date {
