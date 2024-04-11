@@ -1,14 +1,21 @@
 #task_modal{
   width: 450px;
-  height: 90%;
+  height: 90vh;
   position: absolute;
-  top: 50%;
-  left: calc((100% - 980px)/2);
-  transform: translateY(-50%);
+  bottom: 5vh;
+  left: calc((100% - 1400px)/2);
+  /* transform: translateY(-50%); */
   background-color: #F8F8F8;
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.08);
   border-radius: 22px;
   padding: 26px 0 80px 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease-out;
+}
+#task_modal.is-active{
+  opacity: 1;
+  pointer-events: all;
 }
 .task_modal-head{
   display: flex;
@@ -242,7 +249,7 @@
 #add_task_modal{
   width: 450px;
   position: absolute;
-  left: calc((100% - 980px)/2);
+  left: calc((100% - 1400px)/2);
   bottom: 5vh;
   z-index: 11;
   background-color: #fff;
