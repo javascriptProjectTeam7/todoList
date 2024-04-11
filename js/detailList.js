@@ -1,59 +1,36 @@
 import taskData from "./taskData.js";
+import createTaskLi from "./detailListCreateLi.js";
 
-// const selectedDay = taskData.find(
-//   (task) => task.date.month === "04" && task.date.day === "10"
-// );
-const selectedDays = [];
-for (let i = 0; i < taskData.length; i++) {
-  if (taskData[i].date.month === "04" && taskData[i].date.day === "10"){
-    selectedDays.push(taskData[i])
-  }
-  
-}
-console.log(selectedDays);
-const $taskList = document.getElementById('task_list')
+// 캘린더에서 받아 온 선택된 날짜 == 수정 요함
+const selectedDay = taskData.find(
+  (task) => task.date.month === "04" && task.date.day === "20"
+);
+// h3 설정 == 수정 요함
+const $h3Date = document.getElementById("h2Date");
+$h3Date.innerHTML = `${selectedDay.date.month}월 ${selectedDay.date.day}일`;
 
-function addList (){
-  for (let i = 0; i < selectedDays.length; i++) {
-    const $taskLi = document.createElement('li')
-
-    $taskLi.classList.add('task_list-item')
-  
-    const todoList = selectedDays[i].todoList;
-    todoList.array.forEach(todo => {
-      $taskLi.innerHTML = `
-      <span class="time">${selectedDays[i].time}</span>
-      <span class="label"></span>
-      <span class="text">${todo[i].title}</span>
-      `
-      if(todo[i].category === "일"){
-        $taskLi.classList.add('task')
-      } else if(todo[i].category === "휴식"){
-        $taskLi.classList.add('rest')
-      } else if(todo[i].category === "운동"){
-        $taskLi.classList.add('exercise')
-      }
-    });
-    
-  
-    $taskList.append($taskLi)
-    
+const $taskList = document.getElementById("task_list");
+function setListNull(){
+const $nothingLi = document.querySelector("#task_list .task_list-item.nothing");
+  console.log(selectedDay);
+  if (selectedDay.todoList.length) {
+    // 해당 날짜에 일정이 있는 경우 ui
+    $nothingLi.style.display = "none";
+    addList();
+  } else {
+    // 해당 날짜에 일정이 없는 경우 ui
+    $nothingLi.style.display = "flex";
   }
 }
+setListNull()
 
-const $nothingLi = document.querySelector('#task_list .task_list-item.nothing')
-if (selectedDays.length === 0){
-  $nothingLi.style.display = "flex"
-
-} else {
-  $nothingLi.style.display = "none"
-  addList()
-
+// 리스트 추가 메서드
+function addList() {
+  const selectedDayTodoList = selectedDay.todoList;
+  selectedDayTodoList.forEach((task) => {
+    $taskList.append(createTaskLi(task));
+  });
 }
-// h3
-// const $h3Date = document.getElementById("h2Date");
 
-// const date = `${selectedDays[0].date.month}월 ${selectedDays[0].date.day}일`;
-// $h3Date.innerHTML = date;
 
-// 리스트
+export {selectedDay,$taskList, setListNull};

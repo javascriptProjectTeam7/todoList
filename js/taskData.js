@@ -9,7 +9,6 @@ const taskData = [
     todoList: [
       {
         time: "12:00",
-
         title: "할 일1",
         category: "일",
       },
@@ -25,9 +24,13 @@ const taskData = [
     todoList: [
       {
         time: "18:00",
-
         title: "할 일2",
         category: "휴식",
+      },
+      {
+        time: "18:00",
+        title: "할 일2-2",
+        category: "일",
       },
     ],
   },
@@ -41,7 +44,6 @@ const taskData = [
     todoList: [
       {
         time: "14:00",
-
         title: "할 일3",
         category: "운동",
       },
