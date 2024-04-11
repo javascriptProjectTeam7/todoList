@@ -134,14 +134,7 @@ function getDateFromUser() {
 
 function getRecentTodo(date){
     let index = date;
-    
-}
-function checkSchedule() {
-    getDateFromUser();
-
-    getRecentTodo();
-
-    // 입력받은 날짜를 기준으로 앞 뒤 3일 todoList.title 가져와서 출력
+       // 입력받은 날짜를 기준으로 앞 뒤 3일 todoList.title 가져와서 출력
     
     // 출력하려면 todolist.title을 먼저 리스트에 담아서 그 갯수를 세고
     // 갯수 만큼 div 추가해야함
@@ -152,14 +145,32 @@ function checkSchedule() {
 
     // 추가하는 함수
     // todoitems todoList에서 title객체만 뺴서 가져와서 todo 에 집어넣기
-
     let todo = [];
+    if(index > 3){
+        for(let i = 1; i <= 3; i++){
+                taskData[index - i];
+            taskData[index + i];
+        }
+    }else{
+        // ㅇㅖ외처리 해야함
+        for(let i = index; i <= (7-index); i++){
+            taskData[i];
+        }
+    }
     for(let i = 0; i < todo.length; i++){
         const $chekeditem = document.createElement('div');
         $chekeditem.innerHTML = `${i+1}. ${todo[i]}`
         $chekedSs.appendChild($chekeditem);
 
     }
+    
+}
+function checkSchedule() {
+    getDateFromUser();
+
+    getRecentTodo();
+
+ 
     // li 묶음을 #callyResponse에 추가
 }
 
