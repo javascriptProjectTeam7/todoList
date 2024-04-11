@@ -9,8 +9,7 @@ const $rewriteInput = $editBox.querySelector(".rewrite_input");
 const $rewriteText = $editBox.querySelector(".text span:first-child");
 const $rewriteDate = $editBox.querySelector(".date");
 const $rewritetime = $editBox.querySelector(".time");
-
-$rewriteDate.textContent = `${selectedDay.date.month}.${selectedDay.date.day}`;
+// console.log("seletedDayModify", selectedDay);
 
 let $selectedLi;
 let initialValue;
@@ -67,6 +66,8 @@ $taskList.addEventListener("click", (e) => {
   initialValue = selectedLiSet.text;
   $rewriteText.textContent = selectedLiSet.text;
   $rewriteInput.value = selectedLiSet.text;
+$rewriteDate.textContent = `${selectedDay?.date.month}.${selectedDay?.date.day}`;
+
   console.log(taskData);
 });
 
