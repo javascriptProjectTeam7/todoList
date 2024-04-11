@@ -92,10 +92,12 @@ function getDateFromUser(buttonText) {
 }
 
 // 해야함..?
+// 스케줄 체크하는 애
 function checkSchedule(buttonText) {
     // userDate를 보냄
-    getRecentTodo(buttonText);
-
+    getDateFromUser(buttonText);
+    // getRecentData(data);
+    
     // li 묶음을 #callyResponse에 추가
 }
 
@@ -132,6 +134,7 @@ function addSechdule(buttonText) {
     // 입력받은 값 todo list에  또다른 객체로 추가
 }
 
+// 제일
 function getRecentData(userDate) {
     const targetId = userDate.id;
     let recentData = [];
