@@ -1,6 +1,7 @@
 import getCategory from "./getCategory.js";
 import { selectedDay, $taskList, setListNull } from "./detailList.js";
 import taskData from "./taskData.js";
+import { $addTaskModal, setModalInitaial } from "./addTaskModal.js";
 
 // 수정 모달 ui 설정
 const $editBox = document.getElementById("edit_box");
@@ -9,16 +10,14 @@ const $rewriteInput = $editBox.querySelector(".rewrite_input");
 const $rewriteText = $editBox.querySelector(".text span:first-child");
 const $rewriteDate = $editBox.querySelector(".date");
 const $rewritetime = $editBox.querySelector(".time");
-// console.log("seletedDayModify", selectedDay);
 
 let $selectedLi;
 let initialValue;
 let selectedLiData;
 let selectedLiSet = {};
 function positionEditBox(e,$tag){
-  const offset = (window.innerWidth - 980) / 2;
-  $tag.style.left = e.clientX - offset - 10 + "px";
-  $tag.style.top = e.clientY - 10 + "px";
+  $tag.style.left = e.clientX  + "px";
+  $tag.style.top = e.clientY  + "px";
 }
 
 function matchingSelectedData(data){
@@ -31,7 +30,6 @@ function matchingSelectedData(data){
 }
 function getSelectedLi(e){
   $selectedLi = e.target.closest(".task_list-item");
- console.log($selectedLi);
   return {
     text: $selectedLi.querySelector(".text").textContent,
     time: $selectedLi.querySelector(".time").textContent,
@@ -40,7 +38,10 @@ function getSelectedLi(e){
 }
 $taskList.addEventListener("click", (e) => {
   if (!e.target.closest("li").matches(".task_list-item")) return;
+
   e.stopPropagation();
+  $addTaskModal.classList.remove('is-active')
+  setModalInitaial()
 
   positionEditBox(e,$editBox)
 
@@ -68,12 +69,10 @@ $taskList.addEventListener("click", (e) => {
   $rewriteInput.value = selectedLiSet.text;
 $rewriteDate.textContent = `${selectedDay?.date.month}.${selectedDay?.date.day}`;
 
-  console.log(taskData);
 });
 
 // 모달 외 영역 클릭시 닫힘
 document.addEventListener("click", (e) => {
-  console.log(e.target);
   if (e.target.closest(".task_list-item") || e.target.closest("#edit_box"))
     return;
   $editBox.classList.remove("is-active");
@@ -120,7 +119,6 @@ $taskDelBtn.addEventListener("click",function(e){
   
 
   selectedDay.todoList.splice(selectedDay.todoList.indexOf(selectedLiData),1)
-  console.log(selectedDay.todoList);
   // 그 날짜 데이터 삭제??? 놉???
   if (selectedDay.todoList.length === 0){
     taskData.splice(taskData.indexOf(selectedDay),1)

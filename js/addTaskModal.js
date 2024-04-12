@@ -80,13 +80,13 @@ $addTaskModalSubmitBtn.addEventListener("click", () => {
     day: String(date.getDate()).padStart(2, "0"),
   };
   const { year, month, day } = dateSet;
-  console.log(year, month, day);
+  // console.log(year, month, day);
   // 시간
   const time = $timeInput.value;
   const [hour, minute] = time.split(":");
 
   const matchingData = (obj) => {
-    console.log("obj:", obj);
+    // console.log("obj:", obj);
     if (obj === null) return;
     return (
       year === obj.date.year && month === obj.date.month && day === obj.date.day
@@ -120,12 +120,13 @@ $addTaskModalSubmitBtn.addEventListener("click", () => {
     taskData.push(newTaskData);
   }
   // // 현재 선택된 날짜의 투두 리스트 추가시 ui 추가
-  console.log("sd:", selectedDay);
+  // console.log("sd:", selectedDay);
 
   $taskList.append(createTaskLi(newTodoList));
 
   $addTaskModal.classList.remove("is-active");
 
   setModalInitaial();
-  console.log(taskData);
+  // console.log(taskData);
 });
+export {setModalInitaial,$addTaskModal}

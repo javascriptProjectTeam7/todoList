@@ -14,6 +14,8 @@
       rel="stylesheet"
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
+    <script type="module" src="../js/app.js" defer></script>
+
     <script type="module" src="../js/taskData.js" defer></script>
     <script type="module" src="../js/detailList.js" defer></script>
     <script type="module" src="../js/addTaskModal.js" defer></script>
@@ -34,10 +36,11 @@
           <div class="yearMonth"></div>
           <!-- 달 이동 버튼 -->
           <div class="nav">
-            <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
-            <button class="nav-btn go-today" onclick="goToday()">today</button>
-            <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+            <button id="prevBtn" class="nav-btn go-prev">&lt;</button>
+            <!-- <button class="nav-btn go-today" onclick="goToday()">today</button> -->
+            <button id="nextBtn" class="nav-btn go-next" >&gt;</button>
           </div>
+   
         </div>
         <!-- 캘린더 메인 날짜 부분 -->
         <div class="mainDate">
@@ -55,7 +58,6 @@
           <div class="dates"></div>
         </div>
       </div>
-      <script src="../js/app.js"></script>
     </main>
     <!-- ============================= 고정 버튼 영역 ============================= -->
     <div class="fixed_btns">
@@ -90,7 +92,7 @@
         <!-- 일정 리스트 -->
         <div class="task_list_wrap">
           <ul id="task_list">
-            <li class="task_list-item nothing">일정이 없습니다.</li>
+            <li class="task_list-item-nothing">일정이 없습니다.</li>
             <!-- <li class="task_list-item rest">
                 <span class="time">12:00</span>
                 <span class="label"></span>

@@ -130,3 +130,34 @@ body {
 #calendarMain .date:nth-child(7n) {
   color: #396EE2;
 }
+#calendarMain .date .task_list{
+  width: 100%;
+  margin-top: 10px;
+  height: calc(100% - 30px);
+  overflow-y: scroll;
+}
+#calendarMain .date .task_list li{
+  width: 100%;
+  padding: 2px 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #396EE2;
+  border-radius: 4px;
+  color: #0b0c0d;
+  margin-bottom: 4px;
+}
+#calendarMain .date .task_list li:last-child{
+  margin-bottom: 0;
+}
+#calendarMain .date .task_list li.task{
+  background-color: rgba(233, 97, 87, 0.5);
+
+}
+#calendarMain .date .task_list li.rest{
+  background-color: rgba(232, 237, 186, 1);
+}
+#calendarMain .date .task_list li.exercise{
+  background-color: rgba(181, 214, 246, 1);
+}

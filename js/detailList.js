@@ -9,18 +9,17 @@ let selectedDay = null;
 $calendarDates.forEach(($date) => {
   $date.addEventListener("click", (e) => {
     selctedDateData = getDateDatas(e.target);
-    console.log("selctedDateData:", selctedDateData);
+    // console.log("selctedDateData:", selctedDateData);
     $taskModal.classList.add("is-active");
 
     if (selctedDateData) {
-      console.log("taskData find");
       selectedDay = taskData.find((task) => {
         return (
           task.date.month === selctedDateData.month &&
           task.date.day === selctedDateData.day
         );
       });
-      console.log("selectedDay =" + JSON.stringify(selectedDay));
+      // console.log("selectedDay =" + JSON.stringify(selectedDay));
       // h3 설정
       const $h3Date = document.getElementById("h2Date");
       $h3Date.innerHTML = `${selctedDateData.month}월 ${selctedDateData.day}일`;
@@ -42,11 +41,10 @@ function getDateDatas(target) {
 const $taskList = document.getElementById("task_list");
 function setListNull() {
   const $nothingLi = document.querySelector(
-    "#task_list .task_list-item.nothing"
+    "#task_list .task_list-item-nothing"
   );
-  // console.log(selectedDay);
-  // const selectedDayTodoList = ;
-const $listItmes = document.querySelectorAll('#task_list .task_list-item:not(#task_list .task_list-item.nothing)')
+
+const $listItmes = document.querySelectorAll('#task_list .task_list-item')
 
   if ($listItmes){
     $listItmes.forEach($item=>{$item.remove()})
@@ -57,8 +55,6 @@ const $listItmes = document.querySelectorAll('#task_list .task_list-item:not(#ta
     addList();
   } else {
     // 해당 날짜에 일정이 없는 경우 ui
-    
-
     $nothingLi.style.display = "flex";
   }
 }

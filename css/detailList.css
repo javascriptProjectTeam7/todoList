@@ -7,7 +7,7 @@
   /* transform: translateY(-50%); */
   background-color: #F8F8F8;
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.08);
-  border-radius: 22px;
+  border-radius: 20px;
   padding: 26px 0 80px 24px;
   opacity: 0;
   pointer-events: none;
@@ -90,7 +90,7 @@
   cursor: pointer;
   flex-shrink: 0;
 }
-#task_list .task_list-item.nothing{
+#task_list .task_list-item-nothing{
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -99,6 +99,8 @@
   font-size: 14px;
   color: #888C8C;
   display: none;
+  width: calc(100% - 65px);
+  height: 46px;
 }
 #task_list .task_list-item:last-child{
   margin-bottom: 0;
@@ -255,7 +257,7 @@
   z-index: 11;
   background-color: #fff;
   box-shadow: 0 0 13px rgba(0, 0, 0, 0.08);
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
