@@ -129,3 +129,4 @@ $addTaskModalSubmitBtn.addEventListener("click", () => {
   setModalInitaial();
   console.log(taskData);
 });
+export {setModalInitaial,$addTaskModal}

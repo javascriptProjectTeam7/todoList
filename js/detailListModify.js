@@ -1,6 +1,7 @@
 import getCategory from "./getCategory.js";
 import { selectedDay, $taskList, setListNull } from "./detailList.js";
 import taskData from "./taskData.js";
+import { $addTaskModal, setModalInitaial } from "./addTaskModal.js";
 
 // 수정 모달 ui 설정
 const $editBox = document.getElementById("edit_box");
@@ -16,9 +17,8 @@ let initialValue;
 let selectedLiData;
 let selectedLiSet = {};
 function positionEditBox(e,$tag){
-  const offset = (window.innerWidth - 980) / 2;
-  $tag.style.left = e.clientX - offset - 10 + "px";
-  $tag.style.top = e.clientY - 10 + "px";
+  $tag.style.left = e.clientX  + "px";
+  $tag.style.top = e.clientY  + "px";
 }
 
 function matchingSelectedData(data){
@@ -40,7 +40,10 @@ function getSelectedLi(e){
 }
 $taskList.addEventListener("click", (e) => {
   if (!e.target.closest("li").matches(".task_list-item")) return;
+
   e.stopPropagation();
+  $addTaskModal.classList.remove('is-active')
+  setModalInitaial()
 
   positionEditBox(e,$editBox)
 
