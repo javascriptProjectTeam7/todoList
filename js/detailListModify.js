@@ -10,7 +10,6 @@ const $rewriteInput = $editBox.querySelector(".rewrite_input");
 const $rewriteText = $editBox.querySelector(".text span:first-child");
 const $rewriteDate = $editBox.querySelector(".date");
 const $rewritetime = $editBox.querySelector(".time");
-// console.log("seletedDayModify", selectedDay);
 
 let $selectedLi;
 let initialValue;
@@ -31,7 +30,6 @@ function matchingSelectedData(data){
 }
 function getSelectedLi(e){
   $selectedLi = e.target.closest(".task_list-item");
- console.log($selectedLi);
   return {
     text: $selectedLi.querySelector(".text").textContent,
     time: $selectedLi.querySelector(".time").textContent,
@@ -71,12 +69,10 @@ $taskList.addEventListener("click", (e) => {
   $rewriteInput.value = selectedLiSet.text;
 $rewriteDate.textContent = `${selectedDay?.date.month}.${selectedDay?.date.day}`;
 
-  console.log(taskData);
 });
 
 // 모달 외 영역 클릭시 닫힘
 document.addEventListener("click", (e) => {
-  console.log(e.target);
   if (e.target.closest(".task_list-item") || e.target.closest("#edit_box"))
     return;
   $editBox.classList.remove("is-active");
@@ -123,7 +119,6 @@ $taskDelBtn.addEventListener("click",function(e){
   
 
   selectedDay.todoList.splice(selectedDay.todoList.indexOf(selectedLiData),1)
-  console.log(selectedDay.todoList);
   // 그 날짜 데이터 삭제??? 놉???
   if (selectedDay.todoList.length === 0){
     taskData.splice(taskData.indexOf(selectedDay),1)

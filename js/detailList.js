@@ -9,18 +9,17 @@ let selectedDay = null;
 $calendarDates.forEach(($date) => {
   $date.addEventListener("click", (e) => {
     selctedDateData = getDateDatas(e.target);
-    console.log("selctedDateData:", selctedDateData);
+    // console.log("selctedDateData:", selctedDateData);
     $taskModal.classList.add("is-active");
 
     if (selctedDateData) {
-      console.log("taskData find");
       selectedDay = taskData.find((task) => {
         return (
           task.date.month === selctedDateData.month &&
           task.date.day === selctedDateData.day
         );
       });
-      console.log("selectedDay =" + JSON.stringify(selectedDay));
+      // console.log("selectedDay =" + JSON.stringify(selectedDay));
       // h3 설정
       const $h3Date = document.getElementById("h2Date");
       $h3Date.innerHTML = `${selctedDateData.month}월 ${selctedDateData.day}일`;
