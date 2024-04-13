@@ -249,7 +249,6 @@ input[type=time] {
  }
  button#rest:hover{
  background-color: rgba(232, 237, 186, 1); 
-
  }
  button#task:hover{
   background-color: rgba(233, 97, 87, 0.5); 
@@ -258,7 +257,15 @@ input[type=time] {
   background-color: rgba(181, 214, 246, 1);
 
  }
- 
+ button#rest.checkedCt{
+    background-color: rgba(232, 237, 186, 1); 
+ }
+ button#task.checkedCt{
+    background-color: rgba(233, 97, 87, 0.5); 
+}
+ button#exercise.checkedCt{
+  background-color: rgba(181, 214, 246, 1);
+ }
 /* =============================== */
 /* input section */
 /* input박스 하단 곡률 조정 */
