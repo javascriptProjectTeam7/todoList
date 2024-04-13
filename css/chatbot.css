@@ -14,46 +14,49 @@
 
 
 /* chatbot-container 좌측에 위치하게 만듬 */
-#chatbot-container{
+#chatbot-container {
     position: fixed;
     right: calc((100% - 1400px)/2);
-    
+
     width: 450px;
-    
+
     border-radius: 15px;
     background-color: #f8f8f8;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+
     transition: height 0.5s ease;
-    height: 95vh;
+    height: 90vh;
 
     /* bottom: 0; */
 
     bottom: -100%;
     transition: bottom .8s ease-out;
 }
-#chatbot-container.is-active{
+
+#chatbot-container.is-active {
     bottom: 0;
 
 }
-.actionBox_wrap{
+
+.actionBox_wrap {
     height: calc(100% - 140px);
     overflow-y: scroll;
     display: flex;
     flex-direction: column-reverse;
 }
+
 /* 상단 중간 하단으로 나눈 후 css 적용 */
-#chatbot-container .actionBox#top{
+#chatbot-container .actionBox#top {
     color: #F2F2F2;
     border-radius: 15px 15px 0px 0px;
 }
 
 /* input, top 사이즈 조절 */
 #chatbot-container .actionBox#top,
-#chatbot-container .actionBox#input{
+#chatbot-container .actionBox#input {
     height: 70px;
     background-color: #0b0c0d;
 
@@ -63,32 +66,34 @@
 
 /* =============================== */
 /* 캘리에게 물어보세요 파트 */
-#chatbot-container .actionBox.side#top{
+#chatbot-container .actionBox.side#top {
     color: #F2F2F2;
     display: flex;
     justify-content: space-evenly;
-    
+
 }
 
-#chatbot-container .actionBox.side#top .top-section{
+#chatbot-container .actionBox.side#top .top-section {
     width: 100%;
     font-size: 20px;
     display: flex;
     justify-content: space-between;
 }
-#chatbot-container .actionBox.side#top .top-section div{
+
+#chatbot-container .actionBox.side#top .top-section div {
     display: flex;
     padding: 10px;
     align-items: center;
     font-weight: 500;
 }
 
-#chatbot-container .actionBox.side#top .top-section span{
+#chatbot-container .actionBox.side#top .top-section span {
     font-size: 30px;
     padding: 10px;
     font-weight: 500;
 }
-#chatbot-container .actionBox.side#top .top-section span:hover{
+
+#chatbot-container .actionBox.side#top .top-section span:hover {
     font-weight: 700;
 
 }
@@ -97,7 +102,7 @@
 /* =============================== */
 /* 무엇을 도와드릴까요? */
 /* 초기 채팅 창 */
-#chatbot-container .actionBox#chatPart{
+#chatbot-container .actionBox#chatPart {
     background-color: #F2F2F2;
     display: flex;
     flex-direction: column;
@@ -108,7 +113,8 @@
 
     box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
 }
-#chatbot-container .actionBox#chatPart #help{
+
+#chatbot-container .actionBox#chatPart #help {
     margin-bottom: 18px;
     text-indent: 5px;
     font-size: 20px;
@@ -117,18 +123,20 @@
 
 /* 선택 옵션들 */
 
-#chatbot-container .actionBox#chatPart ul{
+#chatbot-container .actionBox#chatPart ul {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    
+
 }
+
 #chatbot-container .actionBox#chatPart li {
     margin-bottom: 10px;
-    display:  flex;
+    display: flex;
     align-items: baseline;
 }
-#chatbot-container .actionBox#chatPart li button{
+
+#chatbot-container .actionBox#chatPart li button {
     background: #F2F2F2;
     border: 1px solid #40403e;
     color: #40403e;
@@ -142,12 +150,14 @@
     display: flex;
     align-items: center;
 }
-#chatbot-container .actionBox#chatPart li span{
+
+#chatbot-container .actionBox#chatPart li span {
     font-size: 13px;
     color: #40403e90;
     padding-left: 9px;
 }
-#chatbot-container .actionBox#chatPart li:hover button{
+
+#chatbot-container .actionBox#chatPart li:hover button {
     background-color: #40403e;
     border-color: #40403e;
     color: #fff;
@@ -156,29 +166,32 @@
 
 /* 채팅 */
 /* 사용자가 입력한 공간 */
-#chatbot-container .actionBox_wrap #response{
+#chatbot-container .actionBox_wrap #response {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: end;
     position: relative;
 }
-#chatbot-container .actionBox_wrap #response li{
+
+#chatbot-container .actionBox_wrap #response li {
     background-color: #888c8c;
     color: #fff;
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
 
+    overflow: auto;
+
     font-size: 16px;
 
-    width: 300px;
+    max-width: 400px;
     box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
 }
 
 
 /* 캘리의 답장 */
-#chatbot-container .actionBox_wrap #response div.callyResponse{
+#chatbot-container .actionBox_wrap #response div.callyResponse {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -187,30 +200,90 @@
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
-    
+
     font-size: 16px;
-    
+
     width: 300px;
     box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
     margin-right: auto;
 }
 
+input[type=date] {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;
+    color: #40403E;
+    width: 138px;
+}
+
+input[type=time] {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;
+    color: #40403E;
+    width: 95px;
+}
+
+#chatbot-container .actionBox_wrap #response div.callyResponse input{
+    /* width: calc((100% - 20px)/2); */
+    border: solid 2px #959494;
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: 10px;
+}
+#confirm{
+    border: solid 2px #959494;
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 240px;
+}
+#confirm:hover{
+    background-color: #888c8c;
+    color: #fff;
+}
+ #categoryOptions button{
+    border: solid 2px #959494;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 10px 10px;
+    width: 50px;
+ }
+ button#rest:hover{
+ background-color: rgba(232, 237, 186, 1); 
+ }
+ button#task:hover{
+  background-color: rgba(233, 97, 87, 0.5); 
+ }
+ button#exercise:hover{
+  background-color: rgba(181, 214, 246, 1);
+
+ }
+ button#rest.checkedCt{
+    background-color: rgba(232, 237, 186, 1); 
+ }
+ button#task.checkedCt{
+    background-color: rgba(233, 97, 87, 0.5); 
+}
+ button#exercise.checkedCt{
+  background-color: rgba(181, 214, 246, 1);
+ }
 /* =============================== */
 /* input section */
 /* input박스 하단 곡률 조정 */
 
-#chatbot-container .actionBox.side#input{
+#chatbot-container .actionBox.side#input {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
 }
-#chatbot-container .actionBox.side#input input{
+
+#chatbot-container .actionBox.side#input input {
     font-size: 20px;
     color: #F2F2F2;
     width: 350px;
 }
-#chatbot-container .actionBox.side#input #arrow{
+
+#chatbot-container .actionBox.side#input #arrow {
     font-size: 25px;
     padding: 8px;
     font-weight: 700;
@@ -220,7 +293,8 @@
     opacity: 1;
     transition: 0.7s;
 }
-#chatbot-container .actionBox.side#input #arrow.hidden{
+
+#chatbot-container .actionBox.side#input #arrow.hidden {
     opacity: 0;
 }
 
@@ -231,10 +305,9 @@
 
 
 /* 화면에서 내리기 */
-#chatbot-container.hidden{
+#chatbot-container.hidden {
     width: 0px;
     /* display: none; */
     transition: 0.6s;
     /* overflow: hidden; */
 }
-
